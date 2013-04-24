@@ -2,7 +2,7 @@ package com.taig.util.operations.list;
 
 public interface Get
 {
-	public void getOnEmptyCollection();
+	public void getWithIndexOnEmptyCollection();
 
 	public void getWithInvalidIndexOnHealthyCollection();
 

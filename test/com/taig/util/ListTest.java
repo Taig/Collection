@@ -235,138 +235,170 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	@Test
 	public void addWithValidIndexOnEmptyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Empty<L, T> data = empty();
+		data.collection.add( 0, data.addable );
+		assertEquals( 1, data.collection.size() );
+		assertEquals( data.addable, data.collection.get( 0 ) );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void addWithInvalidIndexOnEmptyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Empty<L, T> data = empty();
+		data.collection.add( 1, data.addable );
 	}
 
 	@Test
 	public void addWithValidIndexOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		int size = data.collection.size();
+		data.collection.add( 2, data.addable );
+		assertEquals( data.addable, data.collection.get( 2 ) );
+		assertEquals( size + 1, data.collection.size() );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void addWithInvalidIndexOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.add( data.collection.size() + 10, data.addable );
 	}
 
-	@Test
-	public void getOnEmptyCollection()
+	@Test( expected = IndexOutOfBoundsException.class )
+	public void getWithIndexOnEmptyCollection()
 	{
-		throw new UnsupportedOperationException();
+		empty().collection.get( 0 );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void getWithInvalidIndexOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.get( -1 );
 	}
 
 	@Test
 	public void getWithValidIndexOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.add( 3, data.addable );
+		assertEquals( data.addable, data.collection.get( 3 ) );
 	}
 
 	@Test
 	public void indexOfWithNullArgument()
 	{
-		throw new UnsupportedOperationException();
+		assertEquals( -1, empty().collection.indexOf( null ) );
 	}
 
 	@Test
 	public void indexOfOnEmptyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Empty<L, T> data = empty();
+		assertEquals( -1, data.collection.indexOf( data.addable ) );
 	}
 
 	@Test
 	public void indexOfWithNonExistingElementOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		assertEquals( -1, data.collection.indexOf( data.missing ) );
 	}
 
 	@Test
 	public void indexOfWithExistingElementOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.add( 3, data.addable );
+		assertEquals( 3, data.collection.indexOf( data.addable ) );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void removeWithIndexOnEmptyCollection()
 	{
-		throw new UnsupportedOperationException();
+		empty().collection.remove( 0 );
 	}
 
 	@Test
 	public void removeWithValidIndexOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		int size = data.collection.size();
+		data.collection.remove( 2 );
+		assertEquals( size - 1, data.collection.size() );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void removeWithInvalidIndexOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.remove( data.collection.size() + 10 );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void setOnEmptyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Empty<L, T> data = empty();
+		data.collection.set( 0, data.addable );
 	}
 
 	@Test
 	public void setWithNullArgument()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.set( 1, null );
+		assertNull( data.collection.get( 1 ) );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void setWithInvalidIndexOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.set( data.collection.size() + 10, data.addable );
 	}
 
 	@Test
 	public void setWithValidIndexOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.set( 2, data.addable );
+		assertEquals( data.addable, data.collection.get( 2 ) );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void subListOnEmptyCollection()
 	{
-		throw new UnsupportedOperationException();
+		empty().collection.subList( 0, 0 );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void subListWithInvalidIndexesOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.subList( -1, data.collection.size() + 10 );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void subListWithInvalidStartIndexesOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.subList( -1, data.collection.size() - 1 );
 	}
 
-	@Test
+	@Test( expected = IndexOutOfBoundsException.class )
 	public void subListWithInvalidEndIndexesOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		data.collection.subList( 0, data.collection.size() + 10 );
 	}
 
 	@Test
 	public void subListWithValidIndexesOnHealthyCollection()
 	{
-		throw new UnsupportedOperationException();
+		Healthy<L, T> data = healthy();
+		java.util.List<T> subList = data.collection.subList( 0, 2 );
+		assertEquals( 2, subList.size() );
+		assertEquals( data.collection.get( 0 ), subList.get( 0 ) );
 	}
 }

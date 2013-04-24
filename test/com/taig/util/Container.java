@@ -28,6 +28,12 @@ public class Container
 		public Healthy( C collection, T addable, T existing, T missing )
 		{
 			super( collection, addable );
+
+			if( collection.size() < 3 )
+			{
+				throw new IllegalArgumentException( "Collection must be at least of length 3" );
+			}
+
 			this.existing = existing;
 			this.missing = missing;
 		}
