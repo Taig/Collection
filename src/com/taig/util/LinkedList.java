@@ -300,7 +300,14 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public T remove( int location )
 	{
-		return remove( cursor( location ) );
+		if( location < 0 || location >= size )
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		else
+		{
+			return remove( cursor( location ) );
+		}
 	}
 
 	/**
