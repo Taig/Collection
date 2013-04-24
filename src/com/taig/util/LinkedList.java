@@ -22,17 +22,16 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	 */
 	protected int size;
 
-	protected Node<T> head = new Node.Empty<T>();
+	protected Node<T> head;
 
-	protected Node<T> tail = new Node.Empty<T>();
+	protected Node<T> tail;
 
 	/**
 	 * Construct an empty {@link com.taig.util.LinkedList}.
 	 */
 	public LinkedList()
 	{
-		head.right = tail;
-		tail.left = head;
+		clear();
 	}
 
 	/**
@@ -214,11 +213,6 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public boolean addAll( int location, Collection<? extends T> collection )
 	{
-		if( location < 0 || location > size )
-		{
-			throw new IndexOutOfBoundsException();
-		}
-
 		Node<T> cursor = cursor( location );
 
 		for( T element : collection )
@@ -235,7 +229,12 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public void clear()
 	{
-		head = tail = new Node.Empty<T>();
+		head = new Node.Empty<T>();
+		tail = new Node.Empty<T>();
+
+		head.right = tail;
+		tail.left = head;
+
 		size = 0;
 	}
 
@@ -249,7 +248,7 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public T get( int location )
 	{
-		return cursor( location ).payload;
+		return selector( location ).payload;
 	}
 
 	/**
@@ -263,12 +262,7 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public T set( int location, T element )
 	{
-		if( location < 0 || location >= size )
-		{
-			throw new IndexOutOfBoundsException();
-		}
-
-		Node<T> node = cursor( location );
+		Node<T> node = selector( location );
 		T previous = node.payload;
 		node.payload = element;
 
@@ -300,14 +294,7 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public T remove( int location )
 	{
-		if( location < 0 || location >= size )
-		{
-			throw new IndexOutOfBoundsException();
-		}
-		else
-		{
-			return remove( cursor( location ) );
-		}
+		return remove( selector( location ) );
 	}
 
 	/**
@@ -624,6 +611,21 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 			throw new IndexOutOfBoundsException();
 		}
 
+		return move( location );
+	}
+
+	protected Node<T> selector( int location )
+	{
+		if( location < 0 || location >= size )
+		{
+			throw new IndexOutOfBoundsException();
+		}
+
+		return move( location );
+	}
+
+	protected Node<T> move( int location )
+	{
 		Node<T> current = head;
 
 		for( int i = 0; i < location; i++ )
