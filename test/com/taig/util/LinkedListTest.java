@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.taig.util.Container.*;
-import com.taig.util.operations.Dequeue;
+import com.taig.util.operations.Deque;
 
-public class LinkedListTest extends ListTest<List<Integer>, Integer> implements Dequeue
+public class LinkedListTest extends ListTest<List<Integer>, Integer> implements Deque
 {
 	@Override
 	protected Empty<List<Integer>, Integer> empty()
