@@ -366,10 +366,10 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 		assertEquals( data.addable, data.collection.get( 2 ) );
 	}
 
-	@Test( expected = IndexOutOfBoundsException.class )
+	@Test
 	public void subListOnEmptyCollection()
 	{
-		empty().collection.subList( 0, 0 );
+		assertTrue( empty().collection.subList( 0, 0 ).isEmpty() );
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
