@@ -263,16 +263,16 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public T set( int location, T element )
 	{
-		if( location < 0 || location > size )
+		if( location < 0 || location >= size )
 		{
 			throw new IndexOutOfBoundsException();
 		}
 
-		ListIterator<T> iterator = listIterator( location );
-		T predecessor = iterator.next();
-		iterator.set( element );
+		Node<T> node = cursor( location );
+		T previous = node.payload;
+		node.payload = element;
 
-		return predecessor;
+		return previous;
 	}
 
 	/**
