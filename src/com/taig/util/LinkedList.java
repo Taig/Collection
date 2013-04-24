@@ -280,7 +280,7 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public void add( int location, T element )
 	{
-		append( cursor( location ), element );
+		prepend( cursor( location ), element );
 	}
 
 	/**
