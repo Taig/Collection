@@ -3,14 +3,14 @@ package com.taig.util.operations;
 import com.taig.util.operations.collection.*;
 
 public interface	Collection
-extends				Add,
+extends AddWithElement,
 					AddAll,
 					Clear,
 					Contains,
 					ContainsAll,
 					IsEmpty,
 					Iterator,
-					Remove,
+		RemoveWithObject,
 					RemoveAll,
 					RetainAll,
 					Size,

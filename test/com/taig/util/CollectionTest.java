@@ -18,7 +18,7 @@ public abstract class CollectionTest<C extends java.util.Collection<T>, T> imple
 	protected abstract Healthy<C, T> healthy();
 
 	@Test
-	public void addOnEmptyCollection()
+	public void addWithElementOnEmptyCollection()
 	{
 		Empty<C, T> data = empty();
 		data.collection.add( data.addable );
@@ -26,7 +26,7 @@ public abstract class CollectionTest<C extends java.util.Collection<T>, T> imple
 	}
 
 	@Test
-	public void addOnHealthyCollection()
+	public void addWithElementOnHealthyCollection()
 	{
 		Healthy<C, T> data = healthy();
 		int size = data.collection.size();
@@ -281,7 +281,7 @@ public abstract class CollectionTest<C extends java.util.Collection<T>, T> imple
 	}
 
 	@Test
-	public void removeNullElement()
+	public void removeWithNullObject()
 	{
 		Healthy<C, T> data = healthy();
 		data.collection.add( null );
@@ -291,7 +291,7 @@ public abstract class CollectionTest<C extends java.util.Collection<T>, T> imple
 	}
 
 	@Test
-	public void removeElementOnEmptyCollection()
+	public void removeWithObjectOnEmptyCollection()
 	{
 		Empty<C, T> empty = empty();
 		empty.collection.remove( empty.addable );
@@ -299,7 +299,7 @@ public abstract class CollectionTest<C extends java.util.Collection<T>, T> imple
 	}
 
 	@Test
-	public void removeNonExistingElementOnHealthyCollection()
+	public void removeWithNonExistingObjectOnHealthyCollection()
 	{
 		Healthy<C, T> data = healthy();
 		int size = data.collection.size();
@@ -308,7 +308,7 @@ public abstract class CollectionTest<C extends java.util.Collection<T>, T> imple
 	}
 
 	@Test
-	public void removeExistingElementOnHealthyCollection()
+	public void removeWithExistingObjectOnHealthyCollection()
 	{
 		Healthy<C, T> data = healthy();
 		int size = data.collection.size();
