@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.taig.util.Container.*;
+import com.taig.util.operations.Queue;
 import com.taig.util.operations.Deque;
 
-public class LinkedListTest extends ListTest<List<Integer>, Integer> implements Deque
+public class LinkedListTest extends ListTest<List<Integer>, Integer> implements Queue, Deque
 {
 	@Override
 	protected Empty<List<Integer>, Integer> empty()
@@ -32,5 +33,11 @@ public class LinkedListTest extends ListTest<List<Integer>, Integer> implements 
 				return new Integer[size];
 			}
 		};
+	}
+
+	@Override
+	public void addOnFullCollection()
+	{
+		throw new UnsupportedOperationException();
 	}
 }

@@ -1,4 +1,5 @@
 package com.taig.util.operations;
 
-public interface Queue extends Collection, Iterator {
-}
+import com.taig.util.operations.queue.*;
+
+public interface Queue extends Collection, Iterator, Add, Element, Offer, Peek, Poll, Remove {}

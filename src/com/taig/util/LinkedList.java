@@ -15,7 +15,7 @@ import java.util.*;
  *
  * @param <T>
  */
-public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>, Deque<T>
+public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>, Queue<T>, Deque<T>
 {
 	/**
 	 * The list's current size.
@@ -334,7 +334,17 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public int lastIndexOf( Object object )
 	{
-		throw new UnsupportedOperationException();
+		int index = size - 1;
+
+		for( Node<T> node = tail; !node.isEmpty(); node = node.left, index-- )
+		{
+			if( object == null ? node.payload == null : object.equals( node.payload ) )
+			{
+				return index;
+			}
+		}
+
+		return -1;
 	}
 
 	/**
@@ -345,7 +355,7 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public T peek()
 	{
-		throw new UnsupportedOperationException();
+		return head.payload;
 	}
 
 	/**
@@ -357,7 +367,14 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public T element()
 	{
-		throw new UnsupportedOperationException();
+		if( head.isEmpty() )
+		{
+			throw new NoSuchElementException();
+		}
+		else
+		{
+			return peek();
+		}
 	}
 
 	/**
@@ -368,7 +385,7 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public T poll()
 	{
-		throw new UnsupportedOperationException();
+		return remove( head );
 	}
 
 	/**
@@ -392,7 +409,8 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public boolean offer( T element )
 	{
-		throw new UnsupportedOperationException();
+		append( tail, element );
+		return true;
 	}
 
 	/**
@@ -535,15 +553,15 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 		return new ListIterator<T>( cursor( location ) )
 		{
 			@Override
-			protected void remove( Node<T> node )
-			{
-				LinkedList.this.remove( node );
-			}
-
-			@Override
 			protected Node<T> add( Node<T> current, T element )
 			{
 				return prepend( current, element );
+			}
+
+			@Override
+			protected void remove( Node<T> node )
+			{
+				LinkedList.this.remove( node );
 			}
 		};
 	}
@@ -557,7 +575,56 @@ public class LinkedList<T> extends AbstractSequentialList<T> implements List<T>,
 	@Override
 	public Iterator<T> descendingIterator()
 	{
-		return null;
+		return new ListIterator<T>( tail )
+		{
+			@Override
+			public boolean hasNext()
+			{
+				return super.hasPrevious();
+			}
+
+			@Override
+			public int nextIndex()
+			{
+				return super.previousIndex();
+			}
+
+			@Override
+			public T next()
+			{
+				return super.previous();
+			}
+
+			@Override
+			public boolean hasPrevious()
+			{
+				return super.hasNext();
+			}
+
+			@Override
+			public int previousIndex()
+			{
+				return super.nextIndex();
+			}
+
+			@Override
+			public T previous()
+			{
+				return super.next();
+			}
+
+			@Override
+			protected Node<T> add( Node<T> current, T element )
+			{
+				return append( current, element );
+			}
+
+			@Override
+			protected void remove( Node<T> node )
+			{
+				LinkedList.this.remove( node );
+			}
+		};
 	}
 
 	/**
