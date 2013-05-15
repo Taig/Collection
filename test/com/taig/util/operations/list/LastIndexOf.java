@@ -4,9 +4,9 @@ public interface LastIndexOf
 {
 	public void lastIndexOfWithNullArgument();
 
-	public void lastIndexOfOnEmptyCollection();
+	public void lastIndexOfOnEmptyList();
 
-	public void lastIndexOfWithNonExistingElementOnHealthyCollection();
+	public void lastIndexOfWithNonExistingElementOnHealthyList();
 
-	public void lastIndexOfWithExistingElementOnHealthyCollection();
+	public void lastIndexOfWithExistingElementOnHealthyList();
 }

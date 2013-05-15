@@ -2,9 +2,9 @@ package com.taig.util.operations.list;
 
 public interface Get
 {
-	public void getWithIndexOnEmptyCollection();
+	public void getWithIndexOnEmptyList();
 
-	public void getWithInvalidIndexOnHealthyCollection();
+	public void getWithInvalidIndexOnHealthyList();
 
-	public void getWithValidIndexOnHealthyCollection();
+	public void getWithValidIndexOnHealthyList();
 }

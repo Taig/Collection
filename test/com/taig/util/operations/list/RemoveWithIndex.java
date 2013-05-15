@@ -2,9 +2,9 @@ package com.taig.util.operations.list;
 
 public interface RemoveWithIndex
 {
-	public void removeWithIndexOnEmptyCollection();
+	public void removeWithIndexOnEmptyList();
 
-	public void removeWithValidIndexOnHealthyCollection();
+	public void removeWithValidIndexOnHealthyList();
 
-	public void removeWithInvalidIndexOnHealthyCollection();
+	public void removeWithInvalidIndexOnHealthyList();
 }

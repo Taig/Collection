@@ -2,11 +2,11 @@ package com.taig.util.operations.list;
 
 public interface AddWithIndex
 {
-	public void addWithValidIndexOnEmptyCollection();
+	public void addWithValidIndexOnEmptyList();
 
-	public void addWithInvalidIndexOnEmptyCollection();
+	public void addWithInvalidIndexOnEmptyList();
 
-	public void addWithValidIndexOnHealthyCollection();
+	public void addWithValidIndexOnHealthyList();
 
-	public void addWithInvalidIndexOnHealthyCollection();
+	public void addWithInvalidIndexOnHealthyList();
 }

@@ -4,9 +4,9 @@ public interface IndexOf
 {
 	public void indexOfWithNullArgument();
 
-	public void indexOfOnEmptyCollection();
+	public void indexOfOnEmptyList();
 
-	public void indexOfWithNonExistingElementOnHealthyCollection();
+	public void indexOfWithNonExistingElementOnHealthyList();
 
-	public void indexOfWithExistingElementOnHealthyCollection();
+	public void indexOfWithExistingElementOnHealthyList();
 }

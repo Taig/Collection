@@ -233,7 +233,7 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	}
 
 	@Test
-	public void addWithValidIndexOnEmptyCollection()
+	public void addWithValidIndexOnEmptyList()
 	{
 		Empty<L, T> data = empty();
 		data.collection.add( 0, data.addable );
@@ -242,14 +242,14 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void addWithInvalidIndexOnEmptyCollection()
+	public void addWithInvalidIndexOnEmptyList()
 	{
 		Empty<L, T> data = empty();
 		data.collection.add( 1, data.addable );
 	}
 
 	@Test
-	public void addWithValidIndexOnHealthyCollection()
+	public void addWithValidIndexOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		int size = data.collection.size();
@@ -259,27 +259,27 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void addWithInvalidIndexOnHealthyCollection()
+	public void addWithInvalidIndexOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.add( data.collection.size() + 10, data.addable );
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void getWithIndexOnEmptyCollection()
+	public void getWithIndexOnEmptyList()
 	{
 		empty().collection.get( 0 );
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void getWithInvalidIndexOnHealthyCollection()
+	public void getWithInvalidIndexOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.get( -1 );
 	}
 
 	@Test
-	public void getWithValidIndexOnHealthyCollection()
+	public void getWithValidIndexOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.add( 3, data.addable );
@@ -293,21 +293,21 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	}
 
 	@Test
-	public void indexOfOnEmptyCollection()
+	public void indexOfOnEmptyList()
 	{
 		Empty<L, T> data = empty();
 		assertEquals( -1, data.collection.indexOf( data.addable ) );
 	}
 
 	@Test
-	public void indexOfWithNonExistingElementOnHealthyCollection()
+	public void indexOfWithNonExistingElementOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		assertEquals( -1, data.collection.indexOf( data.missing ) );
 	}
 
 	@Test
-	public void indexOfWithExistingElementOnHealthyCollection()
+	public void indexOfWithExistingElementOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.add( 3, data.addable );
@@ -315,13 +315,13 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void removeWithIndexOnEmptyCollection()
+	public void removeWithIndexOnEmptyList()
 	{
 		empty().collection.remove( 0 );
 	}
 
 	@Test
-	public void removeWithValidIndexOnHealthyCollection()
+	public void removeWithValidIndexOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		int size = data.collection.size();
@@ -330,14 +330,14 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void removeWithInvalidIndexOnHealthyCollection()
+	public void removeWithInvalidIndexOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.remove( data.collection.size() + 10 );
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void setOnEmptyCollection()
+	public void setOnEmptyList()
 	{
 		Empty<L, T> data = empty();
 		data.collection.set( 0, data.addable );
@@ -352,14 +352,14 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void setWithInvalidIndexOnHealthyCollection()
+	public void setWithInvalidIndexOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.set( data.collection.size() + 10, data.addable );
 	}
 
 	@Test
-	public void setWithValidIndexOnHealthyCollection()
+	public void setWithValidIndexOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.set( 2, data.addable );
@@ -367,34 +367,34 @@ public abstract class ListTest<L extends java.util.List<T>, T> extends Collectio
 	}
 
 	@Test
-	public void subListOnEmptyCollection()
+	public void subListOnEmptyList()
 	{
 		assertTrue( empty().collection.subList( 0, 0 ).isEmpty() );
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void subListWithInvalidIndexesOnHealthyCollection()
+	public void subListWithInvalidIndexesOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.subList( -1, data.collection.size() + 10 );
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void subListWithInvalidStartIndexesOnHealthyCollection()
+	public void subListWithInvalidStartIndexesOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.subList( -1, data.collection.size() - 1 );
 	}
 
 	@Test( expected = IndexOutOfBoundsException.class )
-	public void subListWithInvalidEndIndexesOnHealthyCollection()
+	public void subListWithInvalidEndIndexesOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		data.collection.subList( 0, data.collection.size() + 10 );
 	}
 
 	@Test
-	public void subListWithValidIndexesOnHealthyCollection()
+	public void subListWithValidIndexesOnHealthyList()
 	{
 		Healthy<L, T> data = healthy();
 		java.util.List<T> subList = data.collection.subList( 0, 2 );

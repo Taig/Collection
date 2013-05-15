@@ -2,13 +2,13 @@ package com.taig.util.operations.list;
 
 public interface SubList
 {
-	public void subListOnEmptyCollection();
+	public void subListOnEmptyList();
 
-	public void subListWithInvalidIndexesOnHealthyCollection();
+	public void subListWithInvalidIndexesOnHealthyList();
 
-	public void subListWithInvalidStartIndexesOnHealthyCollection();
+	public void subListWithInvalidStartIndexesOnHealthyList();
 
-	public void subListWithInvalidEndIndexesOnHealthyCollection();
+	public void subListWithInvalidEndIndexesOnHealthyList();
 
-	public void subListWithValidIndexesOnHealthyCollection();
+	public void subListWithValidIndexesOnHealthyList();
 }

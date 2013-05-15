@@ -36,7 +36,13 @@ public class LinkedListTest extends ListTest<List<Integer>, Integer> implements 
 	}
 
 	@Override
-	public void addOnFullCollection()
+	public void addOnFullQueue()
+	{
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void addFirstOnEmptyDequeue()
 	{
 		throw new UnsupportedOperationException();
 	}
